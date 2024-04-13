@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
     <style>
       body {
+        display: flex;
+        flex-direction: column;
         min-height: 100vh;
         margin: 0;
         background-color: hsl(0, 0%, 25%);
@@ -18,8 +20,10 @@
         font-optical-sizing: auto;
         font-style: normal;
         font-variation-settings: "slnt" 0;
+        justify-content: center;
       }
       layout {
+        min-height: 100%;
         display: grid;
         grid-template-columns: 1fr 4px 1fr;
         place-items: center;
@@ -28,7 +32,7 @@
         height: 100%;
         display: grid;
         place-items: center;
-        width: 100%;
+        min-width: 100%;
       }
       .container {
         display: flex;
@@ -100,10 +104,14 @@
     </layout>
     <script>
       window.onresize = function () {
-        let hasScrollbar = window.innerWidth > document.documentElement.clientWidth;
         const cols = document.querySelectorAll(".col");
+        let colsArr = Array.from(cols);
+        const hasScrollbar = colsArr.some((col) => {
+          if (col.clientHeight > window.innerHeight) return true;
+          else return false;
+        });
+        console.log(hasScrollbar);
         if (hasScrollbar) {
-          console.log(hasScrollbar);
           cols.forEach((col) => {
             col.style.placeItems = "start center";
           });
