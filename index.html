@@ -103,24 +103,27 @@
       </div>
     </layout>
     <script>
-      window.onresize = function () {
+      const setColumnItemsPosition = () => {
         const cols = document.querySelectorAll(".col");
         let colsArr = Array.from(cols);
         const hasScrollbar = colsArr.some((col) => {
           if (col.clientHeight > window.innerHeight) return true;
           else return false;
         });
-        console.log(hasScrollbar);
         if (hasScrollbar) {
           cols.forEach((col) => {
             col.style.placeItems = "start center";
           });
         } else {
           cols.forEach((col) => {
-            col.style.placeItems = "center center";
+            col.style.placeItems = "center";
           });
         }
       };
+      window.onresize = function () {
+        setColumnItemsPosition();
+      };
+      setColumnItemsPosition();
     </script>
   </body>
 </html>
