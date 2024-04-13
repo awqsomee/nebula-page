@@ -13,7 +13,7 @@
         min-height: 100vh;
         margin: 0;
         display: grid;
-        grid-template-columns: 1fr 2px 1fr;
+        grid-template-columns: 1fr 4px 1fr;
         background-color: hsl(0, 0%, 25%);
         color: hsl(0, 0%, 90%);
         font-family: "Inter", sans-serif;
@@ -23,6 +23,7 @@
         place-items: center;
       }
       .col {
+        height: 100%;
         display: grid;
         place-items: center;
         width: 100%;
@@ -36,7 +37,7 @@
         background-color: hsl(0, 0%, 50%);
         height: 80%;
         width: 100%;
-        border-radius: 50%;
+        border-radius: 4px;
       }
       img {
         max-height: 400px;
@@ -93,5 +94,21 @@
         </p>
       </div>
     </div>
+    <script>
+      window.onresize = function () {
+        let hasScrollbar = window.innerWidth > document.documentElement.clientWidth;
+        const cols = document.querySelectorAll(".col");
+        if (hasScrollbar) {
+          console.log(hasScrollbar);
+          cols.forEach((col) => {
+            col.style.placeItems = "start center";
+          });
+        } else {
+          cols.forEach((col) => {
+            col.style.placeItems = "center center";
+          });
+        }
+      };
+    </script>
   </body>
 </html>
