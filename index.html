@@ -41,7 +41,7 @@
       }
       divider {
         background-color: hsl(0, 0%, 50%);
-        height: 80%;
+        height: calc(100% - 96px);
         width: 100%;
         border-radius: 4px;
       }
@@ -64,11 +64,17 @@
         .container {
           padding: 16px;
         }
+        divider {
+          height: calc(100% - 32px);
+        }
       }
 
       @media screen and (max-width: 1024px) {
         .container {
           padding: 24px;
+        }
+        divider {
+          height: calc(100% - 48px);
         }
       }
     </style>
